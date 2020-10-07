@@ -1,8 +1,8 @@
 package com.wyvencraft.hypixelskills.commands;
 
-import com.wyvencraft.wyvencore.Core;
-import com.wyvencraft.wyvencore.attributes.Attribute;
-import com.wyvencraft.wyvencore.attributes.AttributesHandler;
+import com.wyvencraft.hypixelskills.HypixelAddon;
+import com.wyvencraft.hypixelskills.attributes.Attribute;
+import com.wyvencraft.hypixelskills.attributes.AttributesHandler;
 import com.wyvencraft.wyvencore.commands.Permission;
 import com.wyvencraft.wyvencore.common.Lang;
 import com.wyvencraft.wyvencore.configuration.Message;
@@ -15,13 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class AttributesCMD implements CommandExecutor {
 
-    Core plugin = Core.instance;
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
         if (args.length == 0) {
             if (sender.hasPermission(Permission.STATS_HELP.getPerm())) {
-                for (String str : plugin.getConfig("lang").getStringList("STATS.HELP")) {
+                for (String str : HypixelAddon.instance.getConfig("lang").getStringList("STATS.HELP")) {
                     sender.sendMessage(Lang.color(str));
                 }
             } else {
@@ -33,7 +31,7 @@ public class AttributesCMD implements CommandExecutor {
         switch (args[0].toLowerCase()) {
             case "help":
                 if (sender.hasPermission(Permission.STATS_HELP.getPerm())) {
-                    for (String str : plugin.getConfig("lang").getStringList("STATS.HELP")) {
+                    for (String str : HypixelAddon.instance.getConfig("lang").getStringList("STATS.HELP")) {
                         sender.sendMessage(Lang.color(str));
                     }
                 } else {
@@ -46,12 +44,12 @@ public class AttributesCMD implements CommandExecutor {
                     Player setTarget;
                     Attribute setAttribute;
                     if (args.length == 3) {
-                        if (AttributesHandler.instance.getAttribute(args[1]) == null) {
+                        if (AttributesHandler.getAttribute(args[1]) == null) {
                             sender.sendMessage(Message.INVALID_ATTRIBUTE.getChatMessage());
                             return true;
                         }
 
-                        setAttribute = AttributesHandler.instance.getAttribute(args[1]);
+                        setAttribute = AttributesHandler.getAttribute(args[1]);
 
                         setLevel = getLevel(args[2]);
                         if (sender instanceof Player)
@@ -62,12 +60,12 @@ public class AttributesCMD implements CommandExecutor {
                         }
 
                     } else if (args.length == 4) {
-                        if (AttributesHandler.instance.getAttribute(args[1]) == null) {
+                        if (AttributesHandler.getAttribute(args[1]) == null) {
                             sender.sendMessage(Message.INVALID_ATTRIBUTE.getChatMessage());
                             return true;
                         }
 
-                        setAttribute = AttributesHandler.instance.getAttribute(args[1]);
+                        setAttribute = AttributesHandler.getAttribute(args[1]);
 
                         if (getTarget(args[2]) == null) {
                             sender.sendMessage(Message.INVALID_PLAYER.getChatMessage());
@@ -81,7 +79,7 @@ public class AttributesCMD implements CommandExecutor {
                         return true;
                     }
 
-                    AttributesHandler.instance.set(plugin.getStatsManager().getPlayerStats(setTarget.getUniqueId()), setAttribute, setLevel, false);
+                    AttributesHandler.instance.set(HypixelAddon.instance.getStatsManager().getPlayerStats(setTarget.getUniqueId()), setAttribute, setLevel, false);
                     sender.sendMessage(Message.ATTRIBUTE_LEVEL_SET.getChatMessage()
                             .replace("{player}", setTarget.getName())
                             .replace("{amount}", String.valueOf(setLevel))

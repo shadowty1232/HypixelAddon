@@ -1,5 +1,6 @@
 package com.wyvencraft.hypixelskills.listeners;
 
+import com.wyvencraft.hypixelskills.HypixelPlayer;
 import com.wyvencraft.wyvencore.Core;
 import com.wyvencraft.wyvencore.player.PlayerStats;
 import org.bukkit.event.EventHandler;
@@ -12,7 +13,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
-        PlayerStats ps = plugin.getStatsManager().getPlayerStats(e.getPlayer().getUniqueId());
-        ps.addMana(ps.maxMana());
+        HypixelPlayer hp = plugin.getStatsManager().getPlayerStats(e.getPlayer().getUniqueId());
+        hp.addMana(hp.maxMana());
     }
 }

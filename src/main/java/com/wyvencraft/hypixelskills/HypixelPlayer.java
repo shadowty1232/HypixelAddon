@@ -4,6 +4,7 @@ import com.wyvencraft.hypixelskills.attributes.Attribute;
 import com.wyvencraft.hypixelskills.attributes.AttributesHandler;
 import com.wyvencraft.hypixelskills.skills.SkillType;
 
+import com.wyvencraft.wyvencore.player.WyvenPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.EnumMap;
@@ -39,6 +40,11 @@ public class HypixelPlayer extends WyvenPlayer {
         }
 
         enableActionbar();
+    }
+
+    @Override
+    public void reset() {
+        new HypixelPlayer(getPlayer());
     }
 
     private void enableActionbar() {
