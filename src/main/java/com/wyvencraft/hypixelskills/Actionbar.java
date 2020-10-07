@@ -1,9 +1,11 @@
 package com.wyvencraft.hypixelskills;
 
-import com.wyvencraft.wyvencore.Core;
+import com.wyvencraft.hypixelskills.attributes.Attribute;
+import com.wyvencraft.hypixelskills.attributes.AttributesHandler;
+import com.wyvencraft.hypixelskills.skills.SkillType;
+import com.wyvencraft.hypixelskills.skills.Skills;
 
-import com.wyvencraft.wyvencore.attributes.Attribute;
-import com.wyvencraft.wyvencore.attributes.AttributesHandler;
+import com.wyvencraft.wyvencore.Core;
 import com.wyvencraft.wyvencore.common.Lang;
 import org.bukkit.Bukkit;
 
@@ -11,11 +13,11 @@ public abstract class Actionbar {
 
     public final static Core Plugin = Core.instance;
 
-    public Actionbar(WyvenPlayer wyvenPlayer) {
-        this.wyvenPlayer = wyvenPlayer;
-    }
+    public final HypixelPlayer hypixelPlayer;
 
-    public final WyvenPlayer wyvenPlayer;
+    public Actionbar(HypixelPlayer _hypixelPlayer) {
+        hypixelPlayer = _hypixelPlayer;
+    }
 
     public abstract void start();
 
@@ -24,8 +26,8 @@ public abstract class Actionbar {
     private double xp = 0;
 
     public void gainXp(SkillType skill, double xp) {
-        if (Skills.instance.getSkillLevel(wyvenPlayer, skill) == 50) return;
-        Skills.instance.gainXp(wyvenPlayer, skill, xp);
+        if (Skills.instance.getSkillLevel(hypixelPlayer, skill) == 50) return;
+        Skills.instance.gainXp(hypixelPlayer, skill, xp);
         this.skill = skill;
         this.xp = xp;
         this.gainTimer = 2;
@@ -35,29 +37,29 @@ public abstract class Actionbar {
 
     public void sendActionBar(String bar) {
         if (bar.equals(Plugin.getSettings().bar3))
-            bar = bar.replace("{health}", String.valueOf((int) wyvenPlayer.getPlayer().getHealth()))
-                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(wyvenPlayer, Attribute.HEALTH)))
-                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(wyvenPlayer)))
-                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(wyvenPlayer)))
-                    .replace("{defense}", String.valueOf((int) AttributesHandler.instance.getAttribute(wyvenPlayer, Attribute.DEFENSE)));
+            bar = bar.replace("{health}", String.valueOf((int) hypixelPlayer.getPlayer().getHealth()))
+                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(hypixelPlayer, Attribute.HEALTH)))
+                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(hypixelPlayer)))
+                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(hypixelPlayer)))
+                    .replace("{defense}", String.valueOf((int) AttributesHandler.instance.getAttribute(hypixelPlayer, Attribute.DEFENSE)));
 
         else if (bar.equals(Plugin.getSettings().bar2))
-            bar = bar.replace("{health}", String.valueOf((int) wyvenPlayer.getPlayer().getHealth()))
-                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(wyvenPlayer, Attribute.HEALTH)))
-                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(wyvenPlayer)))
-                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(wyvenPlayer)))
+            bar = bar.replace("{health}", String.valueOf((int) hypixelPlayer.getPlayer().getHealth()))
+                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(hypixelPlayer, Attribute.HEALTH)))
+                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(hypixelPlayer)))
+                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(hypixelPlayer)))
                     .replace("{gained}", String.valueOf(xp))
                     .replace("{skill}", skill.name().toLowerCase())
-                    .replace("{xp}", Plugin.DECIMALFORMAT.format(Skills.instance.getSkillXp(wyvenPlayer, skill)))
+                    .replace("{xp}", Plugin.DECIMALFORMAT.format(Skills.instance.getSkillXp(hypixelPlayer, skill)))
                     .replace("{xpNeeded}", String.valueOf(Skills.instance.getXpToNextLevel(
-                            Skills.instance.getSkillLevel(wyvenPlayer, skill))));
+                            Skills.instance.getSkillLevel(hypixelPlayer, skill))));
         else
-            bar = bar.replace("{health}", String.valueOf((int) wyvenPlayer.getPlayer().getHealth()))
-                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(wyvenPlayer, Attribute.HEALTH)))
-                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(wyvenPlayer)))
-                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(wyvenPlayer)));
+            bar = bar.replace("{health}", String.valueOf((int) hypixelPlayer.getPlayer().getHealth()))
+                    .replace("{maxHealth}", String.valueOf((int) AttributesHandler.instance.getAttribute(hypixelPlayer, Attribute.HEALTH)))
+                    .replace("{mana}", String.valueOf(AttributesHandler.instance.getManaPool(hypixelPlayer)))
+                    .replace("{maxMana}", String.valueOf(AttributesHandler.instance.getMaxManaPool(hypixelPlayer)));
 
-        wyvenPlayer.getPlayer().sendActionBar(Lang.color(bar));
+        hypixelPlayer.getPlayer().sendActionBar(Lang.color(bar));
     }
 
     boolean isSavingData = false;
@@ -68,7 +70,7 @@ public abstract class Actionbar {
         isSavingData = true;
 
         Bukkit.getScheduler().runTaskLater(Plugin, () -> {
-            Plugin.getStatsManager().savePlayer(wyvenPlayer, true);
+            Plugin.getStatsManager().savePlayer(hypixelPlayer, true);
             isSavingData = false;
         }, 200);
     }

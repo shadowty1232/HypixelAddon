@@ -1,4 +1,4 @@
-package com.wyvencraft.hypixelskills;
+package com.wyvencraft.hypixelskills.skills;
 
 import com.wyvencraft.wyvencore.player.PlayerStats;
 import com.wyvencraft.wyvencore.utils.CmdAction;

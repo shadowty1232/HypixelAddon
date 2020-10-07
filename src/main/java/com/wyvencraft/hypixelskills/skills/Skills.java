@@ -1,11 +1,11 @@
-package com.wyvencraft.hypixelskills;
+package com.wyvencraft.hypixelskills.skills;
 
 
-import com.wyvencraft.wyvencore.Core;
+import com.wyvencraft.hypixelskills.HypixelAddon;
+import com.wyvencraft.hypixelskills.HypixelPlayer;
 import com.wyvencraft.wyvencore.common.Lang;
 import com.wyvencraft.wyvencore.configuration.Message;
 import com.wyvencraft.wyvencore.enchantments.Enchant;
-import com.wyvencraft.wyvencore.player.PlayerStats;
 import com.wyvencraft.wyvencore.utils.Methods;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -24,12 +24,12 @@ public class Skills implements Serializable {
     public final static List<Skill> Skills = new ArrayList<>();
 
     public void load() {
-        for (String skillName : HypixelSkills.instance.getConfig("skills").getKeys(false)) {
-            ConfigurationSection skillSection = HypixelSkills.instance.getConfig("skills").getConfigurationSection(skillName);
+        for (String skillName : HypixelAddon.instance.getConfig("skills").getKeys(false)) {
+            ConfigurationSection skillSection = HypixelAddon.instance.getConfig("skills").getConfigurationSection(skillName);
 
             SkillType skill = getSkill(skillName);
             if (skill == null) {
-                HypixelSkills.instance.getLogger().severe("no skill named: " + skillName + ", please fix inside config.yml");
+                HypixelAddon.instance.getLogger().severe("no skill named: " + skillName + ", please fix inside config.yml");
                 continue;
             }
 
@@ -42,7 +42,7 @@ public class Skills implements Serializable {
 
                     String displayname = skillSection.getString("cumulative." + cumulative + ".name");
                     if (skillSection.get("cumulative." + cumulative + ".execute") == null) {
-                        HypixelSkills.instance.getLogger().warning("Missing list of executes: " + skillName + " -> " + cumulative + ", skipping");
+                        HypixelAddon.instance.getLogger().warning("Missing list of executes: " + skillName + " -> " + cumulative + ", skipping");
                         continue;
                     }
                     List<String> executes = skillSection.getStringList("cumulative." + cumulative + ".execute");
@@ -63,7 +63,7 @@ public class Skills implements Serializable {
 
                         String displayname = rewardsSection.getString(reward + ".name");
                         if (rewardsSection.get(reward + ".execute") == null) {
-                            HypixelSkills.instance.getLogger().warning("Missing list of executes: " + skillName + " -> " + id + " -> " + reward + ", skipping");
+                            HypixelAddon.instance.getLogger().warning("Missing list of executes: " + skillName + " -> " + id + " -> " + reward + ", skipping");
                             continue;
                         }
 
@@ -77,7 +77,7 @@ public class Skills implements Serializable {
                 }
             }
 
-            HypixelSkills.instance.getLogger().info("Successfully Loaded: " + skillName);
+            HypixelAddon.instance.getLogger().info("Successfully Loaded: " + skillName);
             Skills.add(new Skill(skill, rewards, cumulativeRewards, skillAbility));
         }
     }
@@ -88,41 +88,41 @@ public class Skills implements Serializable {
         }};
     }
 
-    public void addLevels(PlayerSkill playerSkill, SkillType skill, int amount) {
+    public void addLevels(HypixelPlayer playerSkill, SkillType skill, int amount) {
         int currLevel = playerSkill.getSkillLevel().get(skill);
         playerSkill.getSkillLevel().put(skill, Methods.limit(currLevel + amount, 25, 0));
-        HypixelSkills.instance.getStatsManager().savePlayer(playerSkill, true);
+        HypixelAddon.instance.getStatsManager().savePlayer(playerSkill, true);
     }
 
-    public void setLevels(PlayerSkill playerSkill, SkillType skill, int amount) {
+    public void setLevels(HypixelPlayer playerSkill, SkillType skill, int amount) {
         playerSkill.getSkillXp().put(skill, 0.0D);
         playerSkill.getSkillLevel().put(skill, Methods.limit(amount, 25, 0));
 
-        HypixelSkills.instance.getStatsManager().savePlayer(playerSkill, true);
+        HypixelAddon.instance.getStatsManager().savePlayer(playerSkill, true);
     }
 
-    public void takeLevels(PlayerSkill playerSkill, SkillType skill, int amount) {
+    public void takeLevels(HypixelPlayer playerSkill, SkillType skill, int amount) {
         int currLevel = playerSkill.getSkillLevel().get(skill);
         playerSkill.getSkillXp().put(skill, 0.0D);
         playerSkill.getSkillLevel().put(skill, Methods.limit(Math.abs(currLevel - amount), 25, 0));
 
-        HypixelSkills.instance.getStatsManager().savePlayer(playerSkill, true);
+        HypixelAddon.instance.getStatsManager().savePlayer(playerSkill, true);
     }
 
-    public int getSkillLevel(PlayerSkill playerSkill, SkillType skill) {
+    public int getSkillLevel(HypixelPlayer playerSkill, SkillType skill) {
         return playerSkill.getSkillLevel().getOrDefault(skill, 0);
     }
 
-    public double getSkillXp(PlayerSkill playerSkill, SkillType skill) {
+    public double getSkillXp(HypixelPlayer playerSkill, SkillType skill) {
         return playerSkill.getSkillXp().get(skill);
     }
 
     public double getXpToNextLevel(int level) {
-        if (level >= 25) return HypixelSkills.instance.getSettings().xpToNextLevel.get(HypixelSkills.instance.getSettings().xpToNextLevel.size() - 1);
-        return HypixelSkills.instance.getSettings().xpToNextLevel.get(level);
+        if (level >= 25) return HypixelAddon.instance.getSettings().xpToNextLevel.get(HypixelAddon.instance.getSettings().xpToNextLevel.size() - 1);
+        return HypixelAddon.instance.getSettings().xpToNextLevel.get(level);
     }
 
-    public void gainXp(PlayerSkill playerSkill, SkillType skill, double xp) {
+    public void gainXp(HypixelPlayer playerSkill, SkillType skill, double xp) {
         xp += getSkillXp(playerSkill, skill);
         playerSkill.getSkillXp().put(skill, xp);
 
@@ -131,7 +131,7 @@ public class Skills implements Serializable {
         }
     }
 
-    public void levelUp(PlayerSkill playerSkill, SkillType skilltype, int amount) {
+    public void levelUp(HypixelPlayer playerSkill, SkillType skilltype, int amount) {
 
         // A check to prevent player levelling up zero times
         if (amount < 1) return;
@@ -148,7 +148,7 @@ public class Skills implements Serializable {
         Skill skill = getSkill(skilltype);
 
         // SEND LEVELLED UP MESSAGE TO PLAYER
-        for (String line : HypixelSkills.instance.getConfig("lang").getStringList("SKILLS.LEVEL_UP")) {
+        for (String line : HypixelAddon.instance.getConfig("lang").getStringList("SKILLS.LEVEL_UP")) {
             line = line
                     .replace("{SKILL}", Methods.capitalizeFirstWord(skilltype.name()))
                     .replace("{PREVIOUS_LEVEL}", Enchant.getNumeral(level))
@@ -210,7 +210,7 @@ public class Skills implements Serializable {
         try {
             skill = SkillType.valueOf(arg.toUpperCase());
         } catch (IllegalArgumentException e) {
-            HypixelSkills.instance.getLogger().severe(arg + " is not a valid skill name");
+            HypixelAddon.instance.getLogger().severe(arg + " is not a valid skill name");
             return null;
         }
 

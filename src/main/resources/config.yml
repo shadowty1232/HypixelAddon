@@ -1,3 +1,12 @@
+Statsbar: #actionbar
+  defaultBar: "&c{health}/{maxHealth}❤    &b{mana}/{maxMana}✎ Mana"
+  gainXpbar: "&c{health}/{maxHealth}❤    &3+{gained} {skill} ({xp}/{xpNeeded})    &b{mana}/{maxMana}✎ Mana"
+  defaultWithSkill: "&c{health}/{maxHealth}❤    &a{defense}❇ Defense    &b{mana}/{maxMana}✎ Mana"
+
+minManaToRegen: 50
+requireManaToSprint: true
+disableHunger: true
+
 Xp_Yield:
   1: 50
   2: 125

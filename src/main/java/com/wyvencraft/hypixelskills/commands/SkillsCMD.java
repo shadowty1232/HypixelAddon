@@ -1,7 +1,7 @@
 package com.wyvencraft.hypixelskills.commands;
 
-import com.wyvencraft.hypixelskills.SkillType;
-import com.wyvencraft.hypixelskills.Skills;
+import com.wyvencraft.hypixelskills.skills.SkillType;
+import com.wyvencraft.hypixelskills.skills.Skills;
 import com.wyvencraft.wyvencore.Core;
 import com.wyvencraft.wyvencore.commands.Permission;
 import com.wyvencraft.wyvencore.common.Lang;

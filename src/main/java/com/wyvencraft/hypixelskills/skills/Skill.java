@@ -1,4 +1,4 @@
-package com.wyvencraft.hypixelskills;
+package com.wyvencraft.hypixelskills.skills;
 
 import java.util.List;
 import java.util.Map;

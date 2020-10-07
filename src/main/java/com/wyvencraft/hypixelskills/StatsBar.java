@@ -1,12 +1,15 @@
 package com.wyvencraft.hypixelskills;
 
+import com.wyvencraft.hypixelskills.attributes.Attribute;
 import com.wyvencraft.wyvencore.Core;
+import org.bukkit.Bukkit;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class StatsBar extends Actionbar {
 
-    public StatsBar(WyvenPlayer wyvenPlayer) {
-        super(wyvenPlayer);
+    public StatsBar(HypixelPlayer hypixelPlayer) {
+        super(hypixelPlayer);
     }
 
     @Override
@@ -16,61 +19,61 @@ public class StatsBar extends Actionbar {
 
             @Override
             public void run() {
-                if (wyvenPlayer.getPlayer() == null || !wyvenPlayer.getPlayer().isOnline())
+                if (hypixelPlayer.getPlayer() == null || !hypixelPlayer.getPlayer().isOnline())
                     cancel();
 
                 // ACTIONBAR
                 if (gainTimer > 0) {
                     sendActionBar(Plugin.getSettings().bar2);
                     gainTimer--;
-//                } else if (wyvenPlayer.getTotalAttributeLevel(Attribute.DEFENSE) > 0) {
-//                    sendActionBar(Plugin.getSettings().bar3);
+                } else if (hypixelPlayer.getTotalAttributeLevel(Attribute.DEFENSE) > 0) {
+                    sendActionBar(Plugin.getSettings().bar3);
                 } else {
                     sendActionBar(Plugin.getSettings().bar1);
                 }
 
-                if (wyvenPlayer.getPlayer().isDead()) return;
+                if (hypixelPlayer.getPlayer().isDead()) return;
 
-//                if (Plugin.getSettings().requireManaToSprint && wyvenPlayer.getPlayer().isSprinting()) {
-//                    if (wyvenPlayer.getPlayer().isJumping()) wyvenPlayer.subtractMana(5);
-//                    else wyvenPlayer.subtractMana(2);
-//
-//                } else {
-//                    if (counter > 1) {
-//                        // MANA REGENERATION
-//                        if (wyvenPlayer.getCurrentMana() < wyvenPlayer.maxMana()) {
-//                            wyvenPlayer.addMana(wyvenPlayer.maxMana() / 50);
-//                        }
-//                    }
-//                }
-//
-//                if (Plugin.getSettings().requireManaToSprint)
-//                    if (wyvenPlayer.getCurrentMana() == 0) {
-//                        wyvenPlayer.getPlayer().getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.08);
-//                        wyvenPlayer.getPlayer().setSprinting(false);
-//                    }
-//
-//                if (wyvenPlayer.getCurrentMana() > 10) {
-//                    if (wyvenPlayer.getPlayer().getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() == 0.08)
-//                        wyvenPlayer.apply(Attribute.SPEED);
-//                }
-//
-//                if (wyvenPlayer.getCurrentMana() >= Plugin.getSettings().minManaToRegen) {
-//                    if (wyvenPlayer.getPlayer().getHealth() < wyvenPlayer.getTotalAttributeLevel(Attribute.HEALTH)) {
-//                        if (counter > 1) {
-//
-//                            EntityRegainHealthEvent erhe = new EntityRegainHealthEvent(wyvenPlayer.getPlayer(), wyvenPlayer.getHpPerSecond(), EntityRegainHealthEvent.RegainReason.CUSTOM);
-//                            Bukkit.getPluginManager().callEvent(erhe);
-//
-//                            if (!erhe.isCancelled()) {
-//                                double health = wyvenPlayer.getPlayer().getHealth() + wyvenPlayer.getHpPerSecond();
-//                                health = Math.min(health, wyvenPlayer.getTotalAttributeLevel(Attribute.HEALTH));
-//
-//                                wyvenPlayer.getPlayer().setHealth(health);
-//                            }
-//                        }
-//                    }
-//                }
+                if (Plugin.getSettings().requireManaToSprint && hypixelPlayer.getPlayer().isSprinting()) {
+                    if (hypixelPlayer.getPlayer().isJumping()) hypixelPlayer.subtractMana(5);
+                    else hypixelPlayer.subtractMana(2);
+
+                } else {
+                    if (counter > 1) {
+                        // MANA REGENERATION
+                        if (hypixelPlayer.getCurrentMana() < hypixelPlayer.maxMana()) {
+                            hypixelPlayer.addMana(hypixelPlayer.maxMana() / 50);
+                        }
+                    }
+                }
+
+                if (Plugin.getSettings().requireManaToSprint)
+                    if (hypixelPlayer.getCurrentMana() == 0) {
+                        hypixelPlayer.getPlayer().getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.08);
+                        hypixelPlayer.getPlayer().setSprinting(false);
+                    }
+
+                if (hypixelPlayer.getCurrentMana() > 10) {
+                    if (hypixelPlayer.getPlayer().getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() == 0.08)
+                        hypixelPlayer.apply(Attribute.SPEED);
+                }
+
+                if (hypixelPlayer.getCurrentMana() >= Plugin.getSettings().minManaToRegen) {
+                    if (hypixelPlayer.getPlayer().getHealth() < hypixelPlayer.getTotalAttributeLevel(Attribute.HEALTH)) {
+                        if (counter > 1) {
+
+                            EntityRegainHealthEvent erhe = new EntityRegainHealthEvent(hypixelPlayer.getPlayer(), hypixelPlayer.getHpPerSecond(), EntityRegainHealthEvent.RegainReason.CUSTOM);
+                            Bukkit.getPluginManager().callEvent(erhe);
+
+                            if (!erhe.isCancelled()) {
+                                double health = hypixelPlayer.getPlayer().getHealth() + hypixelPlayer.getHpPerSecond();
+                                health = Math.min(health, hypixelPlayer.getTotalAttributeLevel(Attribute.HEALTH));
+
+                                hypixelPlayer.getPlayer().setHealth(health);
+                            }
+                        }
+                    }
+                }
 
                 if (counter > 1) counter = 0;
                 counter++;
