@@ -1,0 +1,651 @@
+FARMING:
+  skillability: "FarmHand"
+  cumulative:
+    health:
+      name: "&8+&a3 HP &c❤ Health"
+      execute:
+        - "[health] 3"
+  rewards:
+    "1":
+      barn:
+        name: "&aAccess to &bThe Barn"
+        execute:
+          - "[addperm] wyvencore.jumppads.thebarn"
+      coins:
+        name: "&8+&625 &7Coins"
+        execute:
+          - "[money] 25"
+    "2":
+      coins:
+        name: "&8+&650 &7Coins"
+        execute:
+          - "[money] 50"
+    "3":
+      coins:
+        name: "&8+&6100 &7Coins"
+        execute:
+          - "[money] 100"
+    "4":
+      coins:
+        name: "&8+&6200 &7Coins"
+        execute:
+          - "[money] 200"
+    "5":
+      mushroom:
+        name: "&aAccess to &bMushroom Desert"
+        execute:
+          - "[addperm] wyvencore.jumppads.mushroomdesert"
+      coins:
+        name: "&8+&6300 &7Coins"
+        execute:
+          - "[money] 300"
+    "6":
+      coins:
+        name: "&8+&6400 &7Coins"
+        execute:
+          - "[money] 400"
+    "7":
+      coins:
+        name: "&8+&6500 &7Coins"
+        execute:
+          - "[money] 500"
+    "8":
+      coins:
+        name: "&8+&6600 &7Coins"
+        execute:
+          - "[money] 600"
+    "9":
+      coins:
+        name: "&8+&6700 &7Coins"
+        execute:
+          - "[money] 700"
+    "10":
+      coins:
+        name: "&8+&6800 &7Coins"
+        execute:
+          - "[money] 800"
+    "11":
+      coins:
+        name: "&8+&6900 &7Coins"
+        execute:
+          - "[money] 900"
+    "12":
+      coins:
+        name: "&8+&61000 &7Coins"
+        execute:
+          - "[money] 1000"
+    "13":
+      coins:
+        name: "&8+&61100 &7Coins"
+        execute:
+          - "[money] 1100"
+    "14":
+      coins:
+        name: "&8+&61200 &7Coins"
+        execute:
+          - "[money] 1200"
+    "15":
+      coins:
+        name: "&8+&61300 &7Coins"
+        execute:
+          - "[money] 1300"
+    "16":
+      coins:
+        name: "&8+&61400 &7Coins"
+        execute:
+          - "[money] 1400"
+    "17":
+      coins:
+        name: "&8+&61500 &7Coins"
+        execute:
+          - "[money] 1500"
+    "18":
+      coins:
+        name: "&8+&61600 &7Coins"
+        execute:
+          - "[money] 1600"
+    "19":
+      coins:
+        name: "&8+&61800 &7Coins"
+        execute:
+          - "[money] 1800"
+    "20":
+      coins:
+        name: "&8+&62000 &7Coins"
+        execute:
+          - "[money] 2000"
+    "21":
+      coins:
+        name: "&8+&62200 &7Coins"
+        execute:
+          - "[money] 2200"
+    "22":
+      coins:
+        name: "&8+&62400 &7Coins"
+        execute:
+          - "[money] 2400"
+    "23":
+      coins:
+        name: "&8+&62600 &7Coins"
+        execute:
+          - "[money] 2600"
+    "24":
+      coins:
+        name: "&8+&62800 &7Coins"
+        execute:
+          - "[money] 2800"
+    "25":
+      coins:
+        name: "&8+&63000 &7Coins"
+        execute:
+          - "[money] 3000"
+  xpyield:
+    WHEAT: 1.0
+    POTATO: 1.0
+    CARROT: 1.0
+    MELON: 4
+    PUMPKIN: 4.5
+    SUGAR_CANE: 2.0
+    CACTUS: 2.0
+    BROWN_MUSHROOM: 2.0
+    RED_MUSHROOM: 2.0
+    COCOA: 2.0
+    PORKCHOP: 2.0
+    BEEF: 1.0
+    LEATHER: 1.0
+    CHICKEN: 2.0
+    FEATHER: 2.0
+    EGG: 2.0
+    RABBIT_HIDE: 2.0
+    RABBIT: 2.0
+    RABBIT_FOOT: 2.0
+    MUTTON: 2.0
+    LEGACY_WOOL: 2.0
+MINING:
+  skillability: "Spelunker"
+  cumulative:
+    health:
+      name: "&8+&a2 ❇ Defense"
+      execute:
+        - "[defense] 2"
+  rewards:
+    "1":
+      goldmine:
+        name: "&aAccess to &6Gold Mine"
+        execute:
+          - "[addperm] wyvencore.jumppads.goldmine"
+      coins:
+        name: "&8+&625 &7Coins"
+        execute:
+          - "[money] 25"
+    "2":
+      coins:
+        name: "&8+&650 &7Coins"
+        execute:
+          - "[money] 50"
+    "3":
+      coins:
+        name: "&8+&6100 &7Coins"
+        execute:
+          - "[money] 100"
+    "4":
+      coins:
+        name: "&8+&6200 &7Coins"
+        execute:
+          - "[money] 200"
+    "5":
+      deepcaverns:
+        name: "&aAccess to &6Deep Caverns"
+        execute:
+          - "[addperm] wyvencore.jumppads.caverns"
+      coins:
+        name: "&8+&6300 &7Coins"
+        execute:
+          - "[money] 300"
+    "6":
+      coins:
+        name: "&8+&6400 &7Coins"
+        execute:
+          - "[money] 400"
+    "7":
+      coins:
+        name: "&8+&6500 &7Coins"
+        execute:
+          - "[money] 500"
+    "8":
+      coins:
+        name: "&8+&6600 &7Coins"
+        execute:
+          - "[money] 600"
+    "9":
+      coins:
+        name: "&8+&6700 &7Coins"
+        execute:
+          - "[money] 700"
+    "10":
+      coins:
+        name: "&8+&6800 &7Coins"
+        execute:
+          - "[money] 800"
+    "11":
+      coins:
+        name: "&8+&6900 &7Coins"
+        execute:
+          - "[money] 900"
+    "12":
+      coins:
+        name: "&8+&61000 &7Coins"
+        execute:
+          - "[money] 1000"
+    "13":
+      coins:
+        name: "&8+&61100 &7Coins"
+        execute:
+          - "[money] 1100"
+    "14":
+      coins:
+        name: "&8+&61200 &7Coins"
+        execute:
+          - "[money] 1200"
+    "15":
+      coins:
+        name: "&8+&61300 &7Coins"
+        execute:
+          - "[money] 1300"
+    "16":
+      coins:
+        name: "&8+&61400 &7Coins"
+        execute:
+          - "[money] 1400"
+    "17":
+      coins:
+        name: "&8+&61500 &7Coins"
+        execute:
+          - "[money] 1500"
+    "18":
+      coins:
+        name: "&8+&61600 &7Coins"
+        execute:
+          - "[money] 1600"
+    "19":
+      coins:
+        name: "&8+&61800 &7Coins"
+        execute:
+          - "[money] 1800"
+    "20":
+      coins:
+        name: "&8+&62000 &7Coins"
+        execute:
+          - "[money] 2000"
+    "21":
+      coins:
+        name: "&8+&62200 &7Coins"
+        execute:
+          - "[money] 2200"
+    "22":
+      coins:
+        name: "&8+&62400 &7Coins"
+        execute:
+          - "[money] 2400"
+    "23":
+      coins:
+        name: "&8+&62600 &7Coins"
+        execute:
+          - "[money] 2600"
+    "24":
+      coins:
+        name: "&8+&62800 &7Coins"
+        execute:
+          - "[money] 2800"
+    "25":
+      coins:
+        name: "&8+&63000 &7Coins"
+        execute:
+          - "[money] 3000"
+  xpyield:
+    STONE: 1.0
+    COBBLESTONE: 1.0
+    ICE: 0.2
+    NETHERRACK: 0.5
+    SAND: 3
+    RED_SAND: 3
+    GRAVEL: 4
+    NETHER_QUARTZ_ORE: 5
+    END_STONE: 5
+    COAL_ORE: 5
+    IRON_ORE: 5
+    GOLD_ORE: 6
+    LAPIS_ORE: 7
+    REDSTONE_ORE: 7
+    EMERALD_ORE: 9
+    DIAMOND_ORE: 10
+    DIAMOND_BLOCK: 15
+    OBSIDIAN: 20
+FORAGING:
+  skillability: "Logger"
+  cumulative:
+    health:
+      name: "&8+&a2 &c❁ Strength"
+      execute:
+        - "[strength] 2"
+  rewards:
+    "1":
+      birchforest:
+        name: "&aAccess to &6Birch Forest"
+        execute:
+          - "[addperm] wyvencore.jumppads.birchforest"
+      coins:
+        name: "&8+&625 &7Coins"
+        execute:
+          - "[money] 25"
+    "2":
+      spruceforest:
+        name: "&aAccess to &6Spruce Forest"
+        execute:
+          - "[addperm] wyvencore.jumppads.spruceforest"
+      coins:
+        name: "&8+&650 &7Coins"
+        execute:
+          - "[money] 50"
+    "3":
+      magicforest:
+        name: "&aAccess to &6Magic Forest"
+        execute:
+          - "[addperm] wyvencore.jumppads.magicforest"
+      coins:
+        name: "&8+&6100 &7Coins"
+        execute:
+          - "[money] 100"
+    "4":
+      savannawaste:
+        name: "&aAccess to &6Savanna Waste"
+        execute:
+          - "[addperm] wyvencore.jumppads.savannawaste"
+      coins:
+        name: "&8+&6200 &7Coins"
+        execute:
+          - "[money] 200"
+    "5":
+      jungle:
+        name: "&aAccess to &6Jungle"
+        execute:
+          - "[addperm] wyvencore.jumppads.jungle"
+      coins:
+        name: "&8+&6300 &7Coins"
+        execute:
+          - "[money] 300"
+    "6":
+      coins:
+        name: "&8+&6400 &7Coins"
+        execute:
+          - "[money] 400"
+    "7":
+      coins:
+        name: "&8+&6500 &7Coins"
+        execute:
+          - "[money] 500"
+    "8":
+      coins:
+        name: "&8+&6600 &7Coins"
+        execute:
+          - "[money] 600"
+    "9":
+      coins:
+        name: "&8+&6700 &7Coins"
+        execute:
+          - "[money] 700"
+    "10":
+      coins:
+        name: "&8+&6800 &7Coins"
+        execute:
+          - "[money] 800"
+    "11":
+      coins:
+        name: "&8+&6900 &7Coins"
+        execute:
+          - "[money] 900"
+    "12":
+      coins:
+        name: "&8+&61000 &7Coins"
+        execute:
+          - "[money] 1000"
+    "13":
+      coins:
+        name: "&8+&61100 &7Coins"
+        execute:
+          - "[money] 1100"
+    "14":
+      coins:
+        name: "&8+&61200 &7Coins"
+        execute:
+          - "[money] 1200"
+    "15":
+      coins:
+        name: "&8+&61300 &7Coins"
+        execute:
+          - "[money] 1300"
+    "16":
+      coins:
+        name: "&8+&61400 &7Coins"
+        execute:
+          - "[money] 1400"
+    "17":
+      coins:
+        name: "&8+&61500 &7Coins"
+        execute:
+          - "[money] 1500"
+    "18":
+      coins:
+        name: "&8+&61600 &7Coins"
+        execute:
+          - "[money] 1600"
+    "19":
+      coins:
+        name: "&8+&61800 &7Coins"
+        execute:
+          - "[money] 1800"
+    "20":
+      coins:
+        name: "&8+&62000 &7Coins"
+        execute:
+          - "[money] 2000"
+    "21":
+      coins:
+        name: "&8+&62200 &7Coins"
+        execute:
+          - "[money] 2200"
+    "22":
+      coins:
+        name: "&8+&62400 &7Coins"
+        execute:
+          - "[money] 2400"
+    "23":
+      coins:
+        name: "&8+&62600 &7Coins"
+        execute:
+          - "[money] 2600"
+    "24":
+      coins:
+        name: "&8+&62800 &7Coins"
+        execute:
+          - "[money] 2800"
+    "25":
+      coins:
+        name: "&8+&63000 &7Coins"
+        execute:
+          - "[money] 3000"
+  xpyield:
+    OAK_LOG: 6.0
+    OAK_WOOD: 6.0
+    BIRCH_LOG: 6.0
+    BIRCH_WOOD: 6.0
+    SPRUCE_LOG: 6.0
+    SPRUCE_WOOD: 6.0
+    JUNGLE_LOG: 6.0
+    JUNGLE_WOOD: 6.0
+    ACACIA_LOG: 6.0
+    ACACIA_WOOD: 6.0
+    DARK_OAK_LOG: 6.0
+    DARK_OAK_WOOD: 6.0
+    DANDELION: 1.0
+    POPPY: 1.0
+    BLUE_ORCHID: 1.0
+    ALLIUM: 1.0
+    AZURE_BLUET: 1.0
+    RED_TULIP: 1.0
+    ORANGE_TULIP: 1.0
+    WHITE_TULIP: 1.0
+    PINK_TULIP: 1.0
+    OXEYE_DAISY: 1.0
+    SUNFLOWER: 1.0
+    CORNFLOWER: 3.0
+COMBAT:
+  skillability: "Warrior"
+  cumulative:
+    health:
+      name: "&8+&a0.5 &9☣ Defense"
+      execute:
+        - "[defense] 2"
+  xpyield:
+    OAK_LOG: 6.0
+    OAK_WOOD: 6.0
+    BIRCH_LOG: 6.0
+    BIRCH_WOOD: 6.0
+  rewards:
+    "1":
+      spidernest:
+        name: "&aAccess to &cSpider Nest"
+        execute:
+          - "[addperm] wyvencore.jumppads.spidernest"
+      coins:
+        name: "&8+&625 &7Coins"
+        execute:
+          - "[money] 25"
+    "2":
+      coins:
+        name: "&8+&650 &7Coins"
+        execute:
+          - "[money] 50"
+    "3":
+      coins:
+        name: "&8+&6100 &7Coins"
+        execute:
+          - "[money] 100"
+    "4":
+      coins:
+        name: "&8+&6200 &7Coins"
+        execute:
+          - "[money] 200"
+    "5":
+      fieryfortress:
+        name: "&aAccess to &cFiery Fortress"
+        execute:
+          - "[addperm] wyvencore.jumppads.fieryfortress"
+      coins:
+        name: "&8+&6300 &7Coins"
+        execute:
+          - "[money] 300"
+    "6":
+      coins:
+        name: "&8+&6400 &7Coins"
+        execute:
+          - "[money] 400"
+    "7":
+      coins:
+        name: "&8+&6500 &7Coins"
+        execute:
+          - "[money] 500"
+    "8":
+      coins:
+        name: "&8+&6600 &7Coins"
+        execute:
+          - "[money] 600"
+    "9":
+      coins:
+        name: "&8+&6700 &7Coins"
+        execute:
+          - "[money] 700"
+    "10":
+      coins:
+        name: "&8+&6800 &7Coins"
+        execute:
+          - "[money] 800"
+    "11":
+      coins:
+        name: "&8+&6900 &7Coins"
+        execute:
+          - "[money] 900"
+    "12":
+      thevoid:
+        name: "&aAccess to &dThe Void"
+        execute:
+          - "[addperm] wyvencore.jumppads.thevoid"
+      coins:
+        name: "&8+&61000 &7Coins"
+        execute:
+          - "[money] 1000"
+    "13":
+      coins:
+        name: "&8+&61100 &7Coins"
+        execute:
+          - "[money] 1100"
+    "14":
+      coins:
+        name: "&8+&61200 &7Coins"
+        execute:
+          - "[money] 1200"
+    "15":
+      coins:
+        name: "&8+&61300 &7Coins"
+        execute:
+          - "[money] 1300"
+    "16":
+      coins:
+        name: "&8+&61400 &7Coins"
+        execute:
+          - "[money] 1400"
+    "17":
+      coins:
+        name: "&8+&61500 &7Coins"
+        execute:
+          - "[money] 1500"
+    "18":
+      coins:
+        name: "&8+&61600 &7Coins"
+        execute:
+          - "[money] 1600"
+    "19":
+      coins:
+        name: "&8+&61800 &7Coins"
+        execute:
+          - "[money] 1800"
+    "20":
+      coins:
+        name: "&8+&62000 &7Coins"
+        execute:
+          - "[money] 2000"
+    "21":
+      coins:
+        name: "&8+&62200 &7Coins"
+        execute:
+          - "[money] 2200"
+    "22":
+      coins:
+        name: "&8+&62400 &7Coins"
+        execute:
+          - "[money] 2400"
+    "23":
+      coins:
+        name: "&8+&62600 &7Coins"
+        execute:
+          - "[money] 2600"
+    "24":
+      coins:
+        name: "&8+&62800 &7Coins"
+        execute:
+          - "[money] 2800"
+    "25":
+      coins:
+        name: "&8+&63000 &7Coins"
+        execute:
+          - "[money] 3000"
