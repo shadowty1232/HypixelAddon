@@ -247,5 +247,19 @@ public class HypixelAddon extends Core {
 //
 //        return String.valueOf(Skills.instance.getSkillLevel(ps, skill));
 //    }
+//    if (identifier.startsWith("attribute_") && identifier.endsWith("_level")) { // Returns players specific attribute amount
+//        String attributeName = identifier.substring(5, identifier.length() - 6);
+//
+//        Attribute attribute = AttributesHandler.instance.getAttribute(attributeName);
+//
+//        if (attribute == null) {
+//            plugin.getLogger().severe("no valid attribute named " + attributeName);
+//            return "invalid attribute";
+//        }
+//
+//        PlayerStats ps = plugin.getStatsManager().getPlayerStats(player.getUniqueId());
+//
+//        return String.valueOf(ps.getTotalAttributeLevel(attribute));
+//    }
 
 }
